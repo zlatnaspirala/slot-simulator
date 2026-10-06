@@ -39,3 +39,8 @@
  .topbar{grid-template-columns:1fr auto}.brand b{font-size:14px}.actions button{font-size:10px;padding:6px}
  .fields{grid-template-columns:1fr}.reels{grid-template-columns:1fr}
 }
+
+/* The Beast Slot */
+.beastPage{height:calc(100vh - 110px);min-height:560px;width:100%;padding:8px;box-sizing:border-box}
+.beastPage iframe{display:block;width:100%;height:100%;min-height:560px;border:0;border-radius:10px;background:#000}
+@media(max-width:700px){.beastPage{height:calc(100vh - 150px);min-height:480px;padding:5px}.beastPage iframe{min-height:480px;border-radius:7px}}
