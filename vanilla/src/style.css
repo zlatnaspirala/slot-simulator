@@ -19,14 +19,23 @@
 .landingFeatures{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:11px}
 @media(max-width:600px){.landing{padding:16px}.landingCard{padding:38px 20px 30px;border-radius:18px}.landingCard h1{font-size:36px}.landingCard .logo{font-size:54px}.landingActions{grid-template-columns:1fr;max-width:360px}.landingFeatures{gap:10px}}
 
-/* 3D page/cube transition */
-.cubeViewport{min-height:100vh;width:100%;perspective:1800px;perspective-origin:50% 50%;overflow:hidden;background:#07090d}
-.cubeFace{min-height:100vh;transform-style:preserve-3d;backface-visibility:hidden;transform-origin:50% 50%;will-change:transform,opacity}
-.cubeFace.cubeTurn{animation:cubeTurn .52s cubic-bezier(.2,.78,.22,1) both}
-@keyframes cubeTurn{
-  0%{transform:rotateY(0deg) scale(1);opacity:1}
-  48%{transform:rotateY(-88deg) scale(.94);opacity:.22}
-  52%{transform:rotateY(88deg) scale(.94);opacity:.22}
-  100%{transform:rotateY(0deg) scale(1);opacity:1}
+
+/* Mobile-first application header */
+.brand{display:flex;align-items:center;gap:6px;white-space:nowrap}.brand b{font-size:16px}
+.topbar{min-height:52px;height:auto;padding:7px 10px;gap:8px;flex-wrap:wrap}
+.tabs{display:flex;gap:4px;align-items:center;order:2}
+.tabs button{padding:6px 9px;font-size:12px}.tabs button.active{background:var(--accent);border-color:var(--accent);font-weight:700}
+.actions{margin-left:auto;display:flex;gap:4px}.actions button{padding:6px 8px;font-size:11px}
+@media(max-width:700px){
+ .topbar{padding:7px 8px;display:grid;grid-template-columns:1fr auto;grid-template-areas:"brand actions" "tabs tabs";gap:7px}
+ .brand{grid-area:brand}.actions{grid-area:actions;margin:0}.tabs{grid-area:tabs;width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+ .tabs button{width:100%;padding:8px 4px;font-size:11px}
+ .machineBar{padding:7px 8px}.machineBar strong{width:auto}.machineBar select{flex:1;min-width:120px;width:auto}
+ .machineBar button{font-size:11px;padding:6px 7px}
+ .workspace{display:block;padding:7px}.panel{padding:9px;margin-bottom:7px}
+ .fields{grid-template-columns:1fr 1fr}.reels{grid-template-columns:1fr 1fr}
 }
-@media(prefers-reduced-motion:reduce){.cubeFace.cubeTurn{animation:none}}
+@media(max-width:420px){
+ .topbar{grid-template-columns:1fr auto}.brand b{font-size:14px}.actions button{font-size:10px;padding:6px}
+ .fields{grid-template-columns:1fr}.reels{grid-template-columns:1fr}
+}
