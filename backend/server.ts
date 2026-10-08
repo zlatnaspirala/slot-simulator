@@ -28,6 +28,18 @@ async function start(){ await mongo.connect(); db=mongo.db(process.env.MONGODB_D
   if(req.method==="OPTIONS"){res.writeHead(204);return res.end();}
   try{
     const u=new URL(req.url||"/","http://localhost");const routePath=u.pathname;
+    if(routePath==="/api/auth/signup"&&req.method==="POST"){
+      const body=await json(req);const email=String(body.email||"").toLowerCase().trim();const password=String(body.password||"");
+      if(!email||!password)return send(res,400,{error:"Email and password are required"});
+      if(password.length<8)return send(res,400,{error:"Password must be at least 8 characters"});
+      const users=db.collection("users");if(await users.findOne({email}))return send(res,409,{error:"User already exists"});
+      const passwordHash=await bcrypt.hash(password,12);const result=await users.insertOne({email,passwordHash,role:"user",createdAt:new Date()});
+      const config=structuredClone(defaultSlot);config.name="My Slot Machine";const now=new Date();
+      await db.collection("slot_machines").insertOne({userId:result.insertedId,name:config.name,config,createdAt:now,updatedAt:now});
+      const token=crypto.randomBytes(32).toString("hex");await db.collection("sessions").insertOne({token,userId:String(result.insertedId),createdAt:now,expiresAt:new Date(Date.now()+12*60*60*1000)});
+      res.setHeader("Set-Cookie",`slot_session=${token}; HttpOnly; Path=/; Max-Age=43200; SameSite=Lax${process.env.NODE_ENV==="production"?"; Secure":""}`);
+      return send(res,200,{ok:true,email,role:"user"});
+    }
     if(routePath==="/api/auth/login"&&req.method==="POST"){
       const body=await json(req);const email=String(body.email||"").toLowerCase().trim();const password=String(body.password||"");
       if(!email||!password)return send(res,400,{error:"Email and password are required"});
