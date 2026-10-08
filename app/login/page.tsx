@@ -1,14 +1,13 @@
 "use client";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 export default function LoginPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [error,setError]=useState("");
-  const [busy,setBusy]=useState(false); const [signup,setSignup]=useState(false);
-  useEffect(()=>{setSignup(new URLSearchParams(window.location.search).get("signup")==="1")},[]);
+  const [busy,setBusy]=useState(false);
+  const [signup,setSignup]=useState(() => typeof window !== "undefined" && new URLSearchParams(window.location.search).get("signup")==="1");
   async function submit(e:FormEvent){e.preventDefault();setBusy(true);setError("");
     const r=await fetch(signup?"/api/auth/signup":"/api/auth/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({email,password})});
     const data=await r.json();setBusy(false);
