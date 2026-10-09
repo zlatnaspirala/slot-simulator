@@ -70,3 +70,13 @@
 .symbolRow{grid-template-columns:68px minmax(0,1fr) 86px;gap:4px;padding:4px;background:var(--panel2);border:1px solid var(--border);border-radius:5px}
 .symbolRow input,.symbolRow select{min-width:0;padding:4px 5px;font-size:11px}
 @media(max-width:600px){.symbolEditor{grid-template-columns:1fr}.symbolRow{grid-template-columns:62px minmax(0,1fr) 80px}}
+
+
+/* Consistent Free Spins form alignment */
+.freeSpinFields{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));align-items:end;gap:8px;margin-top:10px}
+.freeSpinFields>label:not(.check){display:flex;flex-direction:column;gap:4px;min-width:0;color:#aeb7c5;line-height:1.25}
+.freeSpinFields>label:not(.check) input,.freeSpinFields>label:not(.check) select{width:100%;min-width:0;margin:0;height:30px;min-height:30px;padding:4px 7px}
+.freeSpinFields>.check{display:flex;align-items:center;align-self:end;gap:6px;min-height:30px;margin:0;padding:0 2px;color:#aeb7c5}
+.freeSpinFields>.check input{width:14px;height:14px;min-height:0;margin:0;flex:0 0 auto}
+@media(max-width:800px){.freeSpinFields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.freeSpinFields{grid-template-columns:1fr}}
