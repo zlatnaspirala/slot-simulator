@@ -55,7 +55,7 @@
 /* Compact reel strips and scrollable paytable */
 .reelStripWrap{width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:3px}
 .reels{display:flex;width:max-content;min-width:0;gap:7px}
-.reels>.reel{flex:0 0 155px;width:155px;max-width:155px}
+.reels>.reel{flex:0 0 138px;width:138px;max-width:138px}
 .reelStripWrap::-webkit-scrollbar,.tableWrap::-webkit-scrollbar{height:6px}
 .reelStripWrap::-webkit-scrollbar-thumb,.tableWrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:6px}
 .tableWrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
@@ -63,4 +63,10 @@
 .tableWrap th,.tableWrap td{white-space:nowrap;padding:3px 5px}
 .tableWrap th:first-child,.tableWrap td:first-child{min-width:66px;max-width:90px}
 .tableWrap td input.pay{width:56px;min-width:56px;padding:4px 5px}
-@media(max-width:600px){.reels>.reel{flex-basis:145px;width:145px;max-width:145px}.tableWrap th,.tableWrap td{padding:3px 4px}.tableWrap td input.pay{width:50px;min-width:50px}}
+@media(max-width:600px){.reels>.reel{flex-basis:132px;width:132px;max-width:132px}.tableWrap th,.tableWrap td{padding:3px 4px}.tableWrap td input.pay{width:50px;min-width:50px}}
+
+/* Compact symbol cards */
+.symbolEditor{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:5px}
+.symbolRow{grid-template-columns:68px minmax(0,1fr) 86px;gap:4px;padding:4px;background:var(--panel2);border:1px solid var(--border);border-radius:5px}
+.symbolRow input,.symbolRow select{min-width:0;padding:4px 5px;font-size:11px}
+@media(max-width:600px){.symbolEditor{grid-template-columns:1fr}.symbolRow{grid-template-columns:62px minmax(0,1fr) 80px}}
