@@ -12,3 +12,16 @@ body{min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;bor
 
 /* Compact payout count picker */
 .payoutControls{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.payoutPicker{position:relative;display:inline-block}.payoutPopup{position:absolute;right:0;top:calc(100% + 5px);z-index:50;min-width:175px;padding:7px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;background:var(--panel2);border:1px solid var(--border2);border-radius:7px;box-shadow:0 10px 28px #0008}.payoutPopup[hidden]{display:none}.payoutPopup select{margin:0;min-width:0;width:100%;font-size:11px}.payoutPopup button{white-space:nowrap}.payoutPopup span{grid-column:1/-1;color:var(--muted);font-size:10px;padding:4px}
+
+/* Reel strips stay compact; scroll horizontally when they exceed the editor width */
+.reelStripWrap{width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:3px}
+.dynamicReels{display:flex;width:max-content;min-width:0;gap:5px}
+.dynamicReels>.reel{flex:0 0 150px;width:150px;max-width:150px}
+.reelStripWrap::-webkit-scrollbar,.tableWrap::-webkit-scrollbar{height:6px}
+.reelStripWrap::-webkit-scrollbar-thumb,.tableWrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:6px}
+.tableWrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+.tableWrap table{width:max-content;min-width:0;table-layout:auto;margin-top:0}
+.tableWrap th,.tableWrap td{white-space:nowrap;padding:3px 5px}
+.tableWrap th:first-child,.tableWrap td:first-child{min-width:65px;max-width:90px}
+.payInput{width:54px;min-width:54px!important;padding:3px 4px}
+@media(max-width:600px){.dynamicReels>.reel{flex-basis:140px;width:140px;max-width:140px}.tableWrap th,.tableWrap td{padding:3px 4px}.payInput{width:48px;min-width:48px!important}}
