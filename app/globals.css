@@ -16,7 +16,7 @@ body{min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;bor
 /* Reel strips stay compact; scroll horizontally when they exceed the editor width */
 .reelStripWrap{width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:3px}
 .dynamicReels{display:flex;width:max-content;min-width:0;gap:5px}
-.dynamicReels>.reel{flex:0 0 150px;width:150px;max-width:150px}
+.dynamicReels>.reel{flex:0 0 135px;width:135px;max-width:135px}
 .reelStripWrap::-webkit-scrollbar,.tableWrap::-webkit-scrollbar{height:6px}
 .reelStripWrap::-webkit-scrollbar-thumb,.tableWrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:6px}
 .tableWrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
@@ -24,4 +24,10 @@ body{min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;bor
 .tableWrap th,.tableWrap td{white-space:nowrap;padding:3px 5px}
 .tableWrap th:first-child,.tableWrap td:first-child{min-width:65px;max-width:90px}
 .payInput{width:54px;min-width:54px!important;padding:3px 4px}
-@media(max-width:600px){.dynamicReels>.reel{flex-basis:140px;width:140px;max-width:140px}.tableWrap th,.tableWrap td{padding:3px 4px}.payInput{width:48px;min-width:48px!important}}
+@media(max-width:600px){.dynamicReels>.reel{flex-basis:128px;width:128px;max-width:128px}.tableWrap th,.tableWrap td{padding:3px 4px}.payInput{width:48px;min-width:48px!important}}
+
+/* Compact symbol editor cards */
+.symbolEditor{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:5px}
+.symbolRow{grid-template-columns:68px minmax(0,1fr) 86px;gap:4px;padding:4px;background:var(--panel2);border:1px solid var(--border);border-radius:5px}
+.symbolRow input,.symbolRow select{min-width:0;padding:4px 5px;font-size:11px}
+@media(max-width:600px){.symbolEditor{grid-template-columns:1fr}.symbolRow{grid-template-columns:62px minmax(0,1fr) 80px}}
